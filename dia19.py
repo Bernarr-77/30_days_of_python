@@ -1,23 +1,24 @@
 from itertools import count
 
+
 class Estoque:
     id_contador = count(1)
     produtos = {}
-    
+
     def __init__(self, nome, valor, quantidade):
         self.id = next(Estoque.id_contador)
         self.nome = nome
         self.valor = valor
         self.quantidade = quantidade
-        Estoque.produtos[self.id] = self  
-    
+        Estoque.produtos[self.id] = self
+
     def adicionar(self, nome, valor, quantidade) -> str:
         if valor > 0:
             self.nome = nome
             self.valor = valor
             self.quantidade = quantidade
             return f"Produto adicionado com sucesso\n{self.id}\n{self.nome}\n{self.valor}\n{self.quantidade}"
-    
+
     @classmethod
     def buscar_item(cls, nome):
         for produto in cls.produtos.values():
